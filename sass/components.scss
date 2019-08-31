@@ -1,0 +1,196 @@
+.navigation {
+    position: fixed;
+    width: 100%;
+    background-color: rgba(#ffffff, $alpha: .3);
+    padding: 1.5rem 0;
+    font-size: 3.2rem;
+    // display: flex;
+    // align-items: center;
+
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.logo {
+    color: $color-primary;
+    font-family: 'Playball';
+}
+
+.banner {
+    height: calc(100vh - 90px);
+    background: url('/img/banner.jpg')  rgba(#000000, 0.5);
+    background-size: cover;
+    background-position-y: -100px;
+    margin-bottom: 2rem;
+}
+
+.button {
+    border: none;
+    color: #ffffff;
+    background-color: $color-primary;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 2.4rem;
+    font-family: inherit;
+
+}
+
+.heading {
+    &-secondary {
+        font-size: 1.8rem;
+        color: $color-primary;
+        font-weight: bold;
+        padding-left: 1rem;
+        display: inline-block;
+        backface-visibility: hidden;
+        animation: pulsate 3s ease-in-out infinite;
+        // transform: scale(1.0);
+    }
+}
+
+.instructions {
+    padding: 35px 25px;
+    background-color: $color-secondary;
+    display: inline-block;
+    border-radius: 1rem;
+    width: 35rem;
+    color: #ffffff;
+    font-size: 1.6rem;
+    margin-bottom: 6rem;
+    box-shadow: $shadow-primary;
+
+    &__text {
+        display: flex;
+    }
+
+    &__text:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &__img {
+        display: inline-block;
+        margin-right: 1.5rem;
+    }
+
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1.0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.story {
+    width: calc((100% - 2 * #{$gutter-horizontal})/3);
+    box-shadow: $shadow-primary;
+    border-radius: 1rem;
+    margin-bottom: 6rem;
+
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+
+        &-cont{
+            height: 32.5rem;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            overflow: hidden;
+        }
+    }
+
+    &__content {
+        padding: 25px;
+        background-color: $color-secondary;
+        border-bottom-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+
+
+        &--title {
+            font-size: 1.8rem;
+            color: #ffffff;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        &--description {
+            font-size: 1.6rem;
+            color: $color-grey;
+            word-spacing: 8px;
+            margin-bottom: 3.5rem;
+        }
+    }
+
+    &__avatar {
+        display: flex;
+        align-items: flex-end;
+
+        &--img {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        &--initials {
+            color: $color-primary;
+            font-size: 1.4rem;
+            margin-left: 8px;
+        }
+
+    }
+
+    &__personName {
+        font-size: 1.6rem;
+        color: $color-grey;
+        margin-bottom: 2rem;
+
+        &-sub {
+            color: $color-primary;
+        }
+    }
+
+    &__button {
+        padding: 15px 30px;
+        border-radius: 1rem;
+        border: none;
+        color: #ffffff;
+        background-color: $color-primary;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: $shadow-primary;
+
+        &--cont {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        &--votes {
+            font-size: 1.4rem;
+            margin-left: 8px;
+            color: $color-grey;
+        }
+    }
+}
+
+.footer {
+    padding: 20px;
+    border-top: 1px solid $color-secondary;
+    text-align: center;
+    font-size: 2.0rem;
+    color: $color-secondary;
+}

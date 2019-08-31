@@ -1,0 +1,17 @@
+.row {
+    max-width: $grid-width;
+    margin: 0 auto;
+
+    .col-1-of-3 {
+        width: calc((100% - 2 * #{$gutter-horizontal})/3);
+    }
+}
+
+.stories {
+    max-width: $grid-width;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+}
