@@ -37,6 +37,11 @@
     cursor: pointer;
     font-size: 2.4rem;
     font-family: inherit;
+    transition: background-color 1s; 
+
+    &:hover {
+        background-color: rgba($color-primary, 0.7);
+    }
 
 }
 
@@ -100,6 +105,7 @@
     box-shadow: $shadow-primary;
     border-radius: 1rem;
     margin-bottom: 6rem;
+    height: fit-content;
 
 
     &__img {
@@ -128,6 +134,7 @@
             color: #ffffff;
             font-weight: bold;
             margin-bottom: 1.5rem;
+            text-transform: capitalize;
         }
 
         &--description {
@@ -135,6 +142,15 @@
             color: $color-grey;
             word-spacing: 8px;
             margin-bottom: 3.5rem;
+        }
+        &--read {
+            word-spacing: 1px;
+            color: #4b4bf5;
+        }
+
+        &--read:hover {
+            text-decoration: underline;
+            cursor: pointer;
         }
     }
 
@@ -175,7 +191,12 @@
         background-color: $color-primary;
         font-weight: bold;
         cursor: pointer;
-        box-shadow: $shadow-primary;
+        box-shadow: $shadow-primary; 
+        transition: background-color 1s; 
+
+        &:hover {
+            background-color: rgba($color-primary, 0.2);
+        }
 
         &--cont {
             display: flex;
@@ -252,6 +273,18 @@
     width: 90%;
     margin: 0 auto;
 
+    &__error{
+        padding: 1rem;
+        font-size: 1.4rem;
+        margin-top: -2rem;
+        display: block;
+        background-color: $color-primary;
+        color: white;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        margin-bottom: 2rem;
+    }
+
     &__title {
         font-size: 2.8rem;
         color: $color-primary;
@@ -282,12 +315,23 @@
         display: block;
         margin: 0 auto;
         border-radius: 1rem;
+        margin-top: 2rem;
         border: none;
         background-color: $color-secondary;
         color: #fff;
         font-weight: normal;
         letter-spacing: 2px;
         cursor: pointer;
+    }
+
+    &__button--error {
+        text-align: center;
+        margin-bottom: -1.5rem;
+        padding: .5rem;
+        background-color: $color-primary;
+        font-size: 1.4rem;
+        color: #fff;
+        border-radius: 1rem;
     }
 
     &__upload {
@@ -322,7 +366,7 @@
 
     &__input {
         width: 100%;
-        border: none;
+        border: 1px solid transparent;
         padding: 1.4rem 2rem;
         font-family: inherit;
         letter-spacing: 1px;
@@ -346,4 +390,14 @@
 
 .required {
     color: $color-primary;
+}
+
+#modal-story {
+    width: 100%;
+    margin-bottom: -2rem;
+    margin-top: -2rem;
+}
+
+.invalid {
+    border: 1px solid $color-primary;
 }
