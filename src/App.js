@@ -173,6 +173,8 @@ class App extends Component {
       }
 
     })
+
+    
   }
   render() {
     return (
@@ -205,9 +207,60 @@ class App extends Component {
               <button onClick={()=>{this.toggleState('form')}} className="button">Share Your Story</button>
           </div>
         </nav>
-        <div className="banner" id="banner"></div>
+          <div class="slider" id="banner">
+            <div class="slider__slides">
+              <div class="slide s--active">
+                <div class="slide__inner">
+                  <div class="slide__content">
+                    <h2 class="slide__heading">Clip-Path Revealing Slider</h2>
+                    <p class="slide__text">Greetings, Traveler!</p>
+                  </div>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="slide__inner">
+                  <div class="slide__content">
+                    <h2 class="slide__heading">Simple Animation</h2>
+                    <p class="slide__text">Clip-path magic!</p>
+                  </div>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="slide__inner">
+                  <div class="slide__content">
+                    <h2 class="slide__heading">Very Stylish Effect!</h2>
+                    <p class="slide__text">It looks cool, isn't it?</p>
+                  </div>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="slide__inner">
+                  <div class="slide__content">
+                    <h2 class="slide__heading">Limited browser support</h2>
+                    <p class="slide__text">Forget about IE/Edge and FF</p>
+                  </div>
+                </div>
+              </div>
+              <div class="slide s--prev">
+                <div class="slide__inner">
+                  <div class="slide__content">
+                    <h2 class="slide__heading">Check my other stuff!</h2>
+                    <p class="slide__text">Naaa and Still testing</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slider__control">
+              <div class="slider__control-line"></div>
+              <div class="slider__control-line"></div>
+            </div>
+            <div class="slider__control slider__control--right m--right">
+              <div class="slider__control-line"></div>
+              <div class="slider__control-line"></div>
+            </div>
+          </div>
         <main className="row">
-          <h4 className="heading-secondary">How to Share Your Story</h4>
+          <h4 className="heading-secondary">Read How to Share Your Story</h4>
           <br/>
           <div className="instructions">
             <p className="instructions__text"><img src="/img/redheart.svg" className="instructions__img"/>Click on share your story button</p>
@@ -215,6 +268,8 @@ class App extends Component {
             <p className="instructions__text"><img src="/img/redheart.svg" className="instructions__img"/>Click submit to publish your story</p>
             <p className="instructions__text"><img src="/img/redheart.svg" className="instructions__img"/>Don't forget to vote</p>
           </div>
+
+
 
           <section className="stories">
             {
