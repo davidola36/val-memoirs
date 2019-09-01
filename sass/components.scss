@@ -18,6 +18,10 @@
 .logo {
     color: $color-primary;
     font-family: 'Playball';
+
+    @media only screen and (max-width:$bp-small) {
+        font-size: 2.8rem;
+    }
 }
 
 
@@ -32,6 +36,10 @@
     font-size: 2.4rem;
     font-family: inherit;
     transition: background-color 1s; 
+
+    @media only screen and (max-width:$bp-small) {
+        font-size: 2rem;
+    }
 
     &:hover {
         background-color: rgba($color-primary, 0.7);
@@ -585,12 +593,15 @@
     }
   
     &__heading {
-      margin-bottom: 20px;
-      font-size: 60px;
+      margin-bottom: 2rem;
+      font-size: 6rem;
+        @media only screen and (max-width:$bp-small) {
+            font-size: 5rem;
+        }
     }
   
     &__text {
-      font-size: 25px;
+      font-size: 2.5rem;
   
       a {
         color: inherit;

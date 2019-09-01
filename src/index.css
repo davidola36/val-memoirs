@@ -63,6 +63,9 @@ body {
 .logo {
   color: #FF5E4E;
   font-family: 'Playball'; }
+  @media only screen and (max-width: 37.5em) {
+    .logo {
+      font-size: 2.8rem; } }
 
 .button {
   border: none;
@@ -74,6 +77,9 @@ body {
   font-size: 2.4rem;
   font-family: inherit;
   transition: background-color 1s; }
+  @media only screen and (max-width: 37.5em) {
+    .button {
+      font-size: 2rem; } }
   .button:hover {
     background-color: rgba(255, 94, 78, 0.7); }
 
@@ -475,10 +481,13 @@ body {
     max-width: 480px;
     color: #fff; }
   .slide__heading {
-    margin-bottom: 20px;
-    font-size: 60px; }
+    margin-bottom: 2rem;
+    font-size: 6rem; }
+    @media only screen and (max-width: 37.5em) {
+      .slide__heading {
+        font-size: 5rem; } }
   .slide__text {
-    font-size: 25px; }
+    font-size: 2.5rem; }
     .slide__text a {
       color: inherit; }
 
