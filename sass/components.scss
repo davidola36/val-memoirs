@@ -553,24 +553,24 @@
       }
     }
   
-    @for $i from 1 through $numOfSlides {
-      &:nth-child(#{$i}) {
-        .slide__inner {
-          background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-#{$i+1}.jpg');
-        }
-      }
-    }
+    // @for $i from 1 through $numOfSlides {
+    //   &:nth-child(#{$i}) {
+    //     .slide__inner {
+    //       background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-#{$i+1}.jpg');
+    //     }
+    //   }
+    // }
   
     &__inner {
       position: absolute;
       left: 50%;
       top: 50%;
       width: 100vw;
-      height: calc(100vh - 90px);
+      height: calc(100vh - 40px);
       margin-left: -50vw;
       margin-top: -50vh;
       background-size: cover;
-      background-position: center center;
+      background-position: center top;
   
       &:before {
         content: "";
@@ -588,7 +588,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        max-width: 480px;
+        max-width: 50rem;
         color: #fff;
     }
   
@@ -607,4 +607,16 @@
         color: inherit;
       }
     }
+  }
+
+  .loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid $color-primary;
+    border-bottom: 16px solid $color-primary;
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
   }

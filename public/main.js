@@ -1,5 +1,18 @@
   function slider() {
-    console.log("hahaha")
+    window.addEventListener('scroll', function(e) {
+      let bannerHeight = this.document.getElementById('banner').offsetHeight;
+      let scrollPosition = this.window.scrollY;
+      if(bannerHeight - scrollPosition < 90) {
+        this.document.getElementById('navigation').style.backgroundColor = '#FFFFFF'
+        this.document.getElementById('navigation').style.borderBottom = '1px solid #FF5E4E';
+
+      }else {
+        this.document.getElementById('navigation').style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+        this.document.getElementById('navigation').style.borderBottom = 'none';
+
+      }
+
+    })
     var $slides = document.querySelectorAll('.slide');
     var $controls = document.querySelectorAll('.slider__control');
     var numOfSlides = $slides.length;

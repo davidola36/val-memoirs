@@ -41,7 +41,7 @@ class Modal extends Component {
                             <div>
                                <div className="story" id="modal-story">
                                 <div className="story__img-cont">
-                                <img src="/img/inlove.jpg" className="story__img"/>
+                                <img src={this.props.story.banner} className="story__img" alt="banner" />
                                 </div>
                                 <div className="story__content">
                                 <h4 className="story__content--title">{this.props.story.title}</h4>
@@ -49,7 +49,7 @@ class Modal extends Component {
                                     {this.props.story.description}
                                 </p>
                                 <div className="story__avatar">
-                                    <img src="/img/smile.png" className="story__avatar--img"/>
+                                    <img src={this.props.story.avatar} className="story__avatar--img"/>
                                     <span className="story__avatar--initials" >{this.props.story.initials}</span>
                                 </div>
                                 <p className="story__personName">{this.props.story.username} </p>

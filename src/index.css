@@ -445,26 +445,16 @@ body {
     clip-path: circle(120vmax at 120vw 50%); }
     .slide.s--active.s--active-prev {
       clip-path: circle(120vmax at 30vw 50%); }
-  .slide:nth-child(1) .slide__inner {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-2.jpg"); }
-  .slide:nth-child(2) .slide__inner {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-3.jpg"); }
-  .slide:nth-child(3) .slide__inner {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-4.jpg"); }
-  .slide:nth-child(4) .slide__inner {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-5.jpg"); }
-  .slide:nth-child(5) .slide__inner {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-6.jpg"); }
   .slide__inner {
     position: absolute;
     left: 50%;
     top: 50%;
     width: 100vw;
-    height: calc(100vh - 90px);
+    height: calc(100vh - 40px);
     margin-left: -50vw;
     margin-top: -50vh;
     background-size: cover;
-    background-position: center center; }
+    background-position: center top; }
     .slide__inner:before {
       content: "";
       position: absolute;
@@ -478,7 +468,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 480px;
+    max-width: 50rem;
     color: #fff; }
   .slide__heading {
     margin-bottom: 2rem;
@@ -490,6 +480,18 @@ body {
     font-size: 2.5rem; }
     .slide__text a {
       color: inherit; }
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #FF5E4E;
+  border-bottom: 16px solid #FF5E4E;
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite; }
 
 .row {
   max-width: 114rem;

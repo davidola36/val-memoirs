@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import Modal from './components/Modal';
 import {CSSTransition} from 'react-transition-group';
+import axios from 'axios';
+import Slider from './components/Slider';
 
 class App extends Component {
   state = {
     isModalOpen: false,
+    loading: true,
     modalType: '',
     stories: [
       {
@@ -41,6 +44,7 @@ class App extends Component {
         id: 3
       }
     ],
+    sliderImages:[],
     selectedStory: {},
     form: {
       name: '',
@@ -156,7 +160,7 @@ class App extends Component {
       let initials = ""
       let firstForm = {...this.state.form}
       firstForm.name.split(' ').forEach((el,i)=>{
-        if(i == 0){
+        if(i === 0){
           initials +=  el[0].toUpperCase()
         }else {
           initials += ('.' + el[0].toUpperCase())
@@ -173,20 +177,21 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', function(e) {
-      let bannerHeight = this.document.getElementById('banner').offsetHeight;
-      let scrollPosition = this.window.scrollY;
-      if(bannerHeight - scrollPosition < 90) {
-        this.document.getElementById('navigation').style.backgroundColor = '#FFFFFF'
-        this.document.getElementById('navigation').style.borderBottom = '1px solid #FF5E4E';
-
-      }else {
-        this.document.getElementById('navigation').style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-        this.document.getElementById('navigation').style.borderBottom = 'none';
-
+    axios.get('https://api.unsplash.com/collections/2152381/photos?per_page=5', {
+      headers: {
+        Authorization: 'Client-ID cacac51dbd74689b4acf2d4cf363fa2799adac8d7420ea547763fee5fac8f246 '
       }
-
     })
+    .then((res)=>{
+      this.setState({loading:false,sliderImages:[...res.data]}, ()=>{
+        res.data.forEach((el, i)=>{
+          let id = 'slider' + (i + 1)
+          let url =  'url(' + el.urls.regular + ')';
+          document.getElementById(id).style.backgroundImage = url
+        })
+      })
+    })
+    
 
     
   }
@@ -222,66 +227,15 @@ class App extends Component {
               <button onClick={()=>{this.toggleState('form')}} className="button">Share Your Story</button>
           </div>
         </nav>
-          <div class="slider" id="banner">
-            <div class="slider__slides">
-              <div class="slide s--active">
-                <div class="slide__inner">
-                  <div class="slide__content">
-                    <h2 class="slide__heading">Clip-Path Revealing Slider</h2>
-                    <p class="slide__text">Greetings, Traveler!</p>
-                  </div>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="slide__inner">
-                  <div class="slide__content">
-                    <h2 class="slide__heading">Simple Animation</h2>
-                    <p class="slide__text">Clip-path magic!</p>
-                  </div>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="slide__inner">
-                  <div class="slide__content">
-                    <h2 class="slide__heading">Very Stylish Effect!</h2>
-                    <p class="slide__text">It looks cool, isn't it?</p>
-                  </div>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="slide__inner">
-                  <div class="slide__content">
-                    <h2 class="slide__heading">Limited browser support</h2>
-                    <p class="slide__text">Forget about IE/Edge and FF</p>
-                  </div>
-                </div>
-              </div>
-              <div class="slide s--prev">
-                <div class="slide__inner">
-                  <div class="slide__content">
-                    <h2 class="slide__heading">Check my other stuff!</h2>
-                    <p class="slide__text">Naaa and Still testing</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider__control">
-              <div class="slider__control-line"></div>
-              <div class="slider__control-line"></div>
-            </div>
-            <div class="slider__control slider__control--right m--right">
-              <div class="slider__control-line"></div>
-              <div class="slider__control-line"></div>
-            </div>
-          </div>
+        {this.state.loading ?  <div style={{marginTop:'8rem',textAlign:'center'}}><div className="loader"></div></div> : <Slider /> }
         <main className="row">
           <h4 className="heading-secondary">Read How to Share Your Story</h4>
           <br/>
           <div className="instructions">
-            <p className="instructions__text"><img src="/img/redheart.svg" className="instructions__img"/>Click on share your story button</p>
-            <p className="instructions__text"><img src="/img/redheart.svg" className="instructions__img"/>Fill in the required information</p>
-            <p className="instructions__text"><img src="/img/redheart.svg" className="instructions__img"/>Click submit to publish your story</p>
-            <p className="instructions__text"><img src="/img/redheart.svg" className="instructions__img"/>Don't forget to vote</p>
+            <p className="instructions__text"><img src="/img/redheart.svg" className="instructions__img" alt="instructions 1"/>Click on share your story button</p>
+            <p className="instructions__text"><img src="/img/redheart.svg" className="instructions__img" alt="instructions 2"/>Fill in the required information</p>
+            <p className="instructions__text"><img src="/img/redheart.svg" className="instructions__img" alt="instructions 3"/>Click submit to publish your story</p>
+            <p className="instructions__text"><img src="/img/redheart.svg" className="instructions__img" alt="instructions 4"/>Don't forget to vote</p>
           </div>
 
 
@@ -304,7 +258,7 @@ class App extends Component {
                         }
                         </p>
                         <div className="story__avatar">
-                            <img src={item.avatar} className="story__avatar--img"/>
+                            <img src={item.avatar} className="story__avatar--img" alt="person avatar"/>
                             <span className="story__avatar--initials" >{item.initials}</span>
                         </div>
                         <p className="story__personName"> {item.username} </p>
