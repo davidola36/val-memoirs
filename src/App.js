@@ -55,6 +55,7 @@ class App extends Component {
       title: ''
     },
     submitValidity: false,
+    validityString: ""
   };
 
   toggleState = (e,i) => {
@@ -80,7 +81,7 @@ class App extends Component {
       description: '',
       title: ''
     }
-    this.setState({form:form,errors:form})
+    this.setState({form:form,errors:form,submitValidity:false})
   }
 
   closeModal = e => {
@@ -108,18 +109,31 @@ class App extends Component {
     let errors = {...this.state.errors}
     let formArray = Object.values(form)
     let errorArray = Object.values(errors)
-
+    let validString = ""
     formArray.forEach((el) =>{
       if(el == ''){
         valid = false
+        validString = "Ensure all required * fields have been field"
       }
     })
     errorArray.forEach((el) =>{
       if(el != ''){
         valid = false
+        validString = "Ensure all required * fields have been field"
       }
     })
-    this.setState({submitValidity: !valid})
+
+    if(valid) {
+      let username = form.username
+      let stories = [...this.state.stories]
+      stories.forEach((el)=>{
+        if(el.username == username) {
+          valid = false
+          validString = "This username has been taken"
+        }
+      })
+    }
+    this.setState({submitValidity: !valid,validityString:validString})
     return valid
   }
 
@@ -198,6 +212,7 @@ class App extends Component {
             addStory={this.addStory}
             errors={this.state.errors}
             submitError={this.state.submitValidity}
+            submitString = {this.state.validityString}
             >
             </Modal>
             </CSSTransition>

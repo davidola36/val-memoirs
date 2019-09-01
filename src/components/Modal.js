@@ -31,7 +31,7 @@ class Modal extends Component {
                         <input type="file" placeholder="Add Avatar" className="form__upload"/> */}
 
 
-                        {this.props.submitError ? <p className="form__button--error">Ensure all required * fields have been filled</p> : null }
+                        {this.props.submitError ? <p className="form__button--error">{this.props.submitString}</p> : null }
                         <input type="button" value="Submit" className="form__button" onClick={this.props.addStory}/>
 
                     </form>: null}
