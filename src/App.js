@@ -16,7 +16,7 @@ class App extends Component {
         name: 'David Adeoye',
         username: 'davidola',
         initials: 'D.A',
-        banner: "/img/inlove.jpg",
+        banner: "/img/couple-1.jpg",
         avatar: "/img/smile.png",
         voteCount: 60,
         id: 1
@@ -27,21 +27,54 @@ class App extends Component {
         name: 'Ayo Afolabi',
         username: 'ayo@startrek.co',
         initials: 'A.A',
-        banner: "/img/inlove.jpg",
+        banner: "/img/couple-2.jpg",
         avatar: "/img/smile.png",
         voteCount: 76,
         id: 2
       },
       {
-        title: 'Dinner is all that counts',
+        title: 'Walking down memory lane',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper luctus quam, quis tempus tortor bibendum in alterest Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper luctus quam, quis tempus tortor bibendum in alterest',
         name: 'Tunde Bakare',
-        username: 'tundeforshow@almightydollar.com',
+        username: 'tundeforshow',
         initials: 'T.B',
-        banner: "/img/inlove.jpg",
+        banner: "/img/couple-3.jpg",
         avatar: "/img/smile.png",
         voteCount: 65,
         id: 3
+      },
+      {
+        title: 'Love at First Sight',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper luctus quam, quis tempus tortor bibendum in alterest',
+        name: 'David Adeoye',
+        username: 'zoro',
+        initials: 'Z.K',
+        banner: "/img/couple-4.jpg",
+        avatar: "/img/smile.png",
+        voteCount: 60,
+        id: 4
+      },
+      {
+        title: 'A day in with the stars',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper luctus quam, quis tempus tortor bibendum in alterest Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper luctus quam, quis tempus tortor bibendum in alterest',
+        name: 'Ayo Afolabi',
+        username: 'babalola',
+        initials: 'B.A',
+        banner: "/img/couple-5.jpg",
+        avatar: "/img/smile.png",
+        voteCount: 76,
+        id: 5
+      },
+      {
+        title: 'Walking down memory lane',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper luctus quam, quis tempus tortor bibendum in alterest Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper luctus quam, quis tempus tortor bibendum in alterest',
+        name: 'Tunde Bakare',
+        username: 'oswald36',
+        initials: 'O.J',
+        banner: "/img/couple-6.jpg",
+        avatar: "/img/smile.png",
+        voteCount: 65,
+        id: 6
       }
     ],
     sliderImages:[],
@@ -177,6 +210,20 @@ class App extends Component {
   }
 
   componentDidMount() {
+    window.addEventListener('scroll', function(e) {
+      let bannerHeight = this.document.getElementById('banner').offsetHeight
+      let scrollPosition = this.window.scrollY;
+      if(bannerHeight - scrollPosition < 90) {
+        this.document.getElementById('navigation').style.backgroundColor = '#FFFFFF'
+        this.document.getElementById('navigation').style.boxShadow = '0px 5px 20px grey';
+
+      }else {
+        this.document.getElementById('navigation').style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+        this.document.getElementById('navigation').style.boxShadow = 'none';
+
+      }
+
+    })
     axios.get('https://api.unsplash.com/collections/2152381/photos?per_page=5', {
       headers: {
         Authorization: 'Client-ID cacac51dbd74689b4acf2d4cf363fa2799adac8d7420ea547763fee5fac8f246 '
@@ -185,7 +232,7 @@ class App extends Component {
     .then((res)=>{
       this.setState({loading:false,sliderImages:[...res.data]}, ()=>{
         res.data.forEach((el, i)=>{
-          let id = 'slider' + (i + 1)
+          let id = 'items-' + (i + 1)
           let url =  'url(' + el.urls.regular + ')';
           document.getElementById(id).style.backgroundImage = url
         })
@@ -227,7 +274,7 @@ class App extends Component {
               <button onClick={()=>{this.toggleState('form')}} className="button">Share Your Story</button>
           </div>
         </nav>
-        {this.state.loading ?  <div style={{marginTop:'8rem',textAlign:'center'}}><div className="loader"></div></div> : <Slider /> }
+        {this.state.loading ?  <div className="slider-loader" id="banner"></div> : <Slider /> }
         <main className="row">
           <h4 className="heading-secondary">Read How to Share Your Story</h4>
           <br/>

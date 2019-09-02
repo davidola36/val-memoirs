@@ -40,7 +40,7 @@ class Modal extends Component {
                         this.props.modalType == "view" ?
                             <div>
                                <div className="story" id="modal-story">
-                                <div className="story__img-cont">
+                                <div className="story__img-cont" style={{height:'40rem'}}>
                                 <img src={this.props.story.banner} className="story__img" alt="banner" />
                                 </div>
                                 <div className="story__content">

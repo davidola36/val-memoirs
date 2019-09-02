@@ -10,11 +10,14 @@ $color-grey-dark: #705C5C;
 
 $shadow-primary: 4px 10px 15px rgba(0, 0, 0, 0.25);
 
-// GRID
+$banner-height: calc(100vh - 40px);
+
+/////////////////////////////////////////////////////// GRID
 $grid-width: 114rem;
 $gutter-vertical: 8rem;
 $gutter-vertical-small: 6rem;
 $gutter-horizontal: 6rem; 
+
 
 ////////////////////////////////////////////////// SCREEN WIDTHS
 $bp-largest: 75em; //1200px
